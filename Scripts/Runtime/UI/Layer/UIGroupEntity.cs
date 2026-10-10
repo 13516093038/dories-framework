@@ -8,7 +8,7 @@ namespace GameFramework.Runtime.UI
 
         internal int GetUILayer(int LayerPriority)
         {
-            return ((int)_group + LayerPriority * 100);
+            return ((int)_group + LayerPriority * 10);
         }
     }
 }

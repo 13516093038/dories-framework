@@ -1,7 +1,6 @@
 #if DORIES_YOOASSET_SUPPORT
 using System;
 using Dories.YooassetSystem.Runtime.AssetLoader;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace GameFramework.Runtime.UI.External.DoriesYooAsset
@@ -19,19 +18,15 @@ namespace GameFramework.Runtime.UI.External.DoriesYooAsset
             }
         }
 
-        public void LoadAssetAsync<T>(IPanelAddress address, Action<T> callback) where T : UIPanelEntity
+        public void LoadAssetAsync<T>(IPanelAddress address, Action<T> callback) where T : Object
         {
             var doriesAddress = address as DoriesPanelAddress;
 
-            _assetLoaderEntity.LoadAssetAsync<GameObject>(doriesAddress.packageName, doriesAddress.assetPath, prefab =>
-            {
-                var instance = Object.Instantiate(prefab);
-                var panel = instance.GetComponent<T>();
-                callback?.Invoke(panel);
-            }, doriesAddress.priority);
+            _assetLoaderEntity.LoadAssetAsync<T>(doriesAddress.packageName, doriesAddress.assetPath,
+                prefab => { callback?.Invoke(prefab); }, doriesAddress.priority);
         }
 
-        public void UnloadAsset<T>(IPanelAddress address, T asset) where T : UIPanelEntity
+        public void UnloadAsset<T>(IPanelAddress address, T asset) where T : Object
         {
             var doriesAddress = address as DoriesPanelAddress;
             _assetLoaderEntity.UnloadAsset(doriesAddress.packageName, doriesAddress.assetPath, true);

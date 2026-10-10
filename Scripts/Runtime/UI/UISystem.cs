@@ -4,7 +4,6 @@ using UnityEngine;
 #if TASK_BASED_OPEN_PANEL
 using System.Threading.Tasks;
 using GameFramework.Runtime.Utils;
-
 #endif
 #if DORIES_UNITASK_SUPPORT
 using Cysharp.Threading.Tasks;
@@ -23,6 +22,7 @@ namespace GameFramework.Runtime.UI
     public class UISystem : MonoBehaviour
     {
         [SerializeField] private bool _autoInit = true;
+        [SerializeField] private bool _isAutoRelease = true;
         [SerializeField] private int _autoReleaseTime = 60;
         [SerializeField] private string _resourceProviderName;
         [SerializeField] private string _panelAddressResolverName;
@@ -38,6 +38,7 @@ namespace GameFramework.Runtime.UI
         private PanelScheduler _panelScheduler;
 
         public bool IsInit => _isInit;
+        public bool IsPopuping => _panelScheduler.IsPopuping;
 
         /// <summary>
         /// UI摄像机
@@ -89,6 +90,16 @@ namespace GameFramework.Runtime.UI
             }
         }
 
+        private void Update()
+        {
+            if(!_isInit) return;
+
+            if(_isAutoRelease)
+            {
+                _panelScheduler.AutoReleaseUpdate(_autoReleaseTime);
+            }
+        }
+        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ThrowIfNotInit()
         {
@@ -136,6 +147,8 @@ namespace GameFramework.Runtime.UI
             _isInit = true;
         }
 
+        #region Open Panel
+
 #if TASK_BASED_OPEN_PANEL
         public async Task<UIPanelEntity> OpenPanelAsync(Type panelType, UIGroup group, object userData = null, int layerPriority = 0)
         {
@@ -143,7 +156,7 @@ namespace GameFramework.Runtime.UI
             return await _panelScheduler.OpenPanelAsync(panelType, group, userData, layerPriority);
         }
 #endif
-        
+
 #if DORIES_UNITASK_SUPPORT
         public async UniTask<UIPanelEntity> OpenPanelAsyncUniTask(Type panelType, UIGroup group, object userData = null, int layerPriority = 0)
         {
@@ -164,6 +177,10 @@ namespace GameFramework.Runtime.UI
             _panelScheduler.OpenPanelAsync<T>(group, userData, onComplete, layerPriority);
         }
 
+        #endregion
+
+        #region Close Panel
+
         public void ClosePanel(Type panelType, object userData = null)
         {
             ThrowIfNotInit();
@@ -176,6 +193,10 @@ namespace GameFramework.Runtime.UI
             _panelScheduler.ClosePanel<T>(userData);
         }
 
+        #endregion
+
+        #region Release Panel
+
         public void ReleasePanel(Type panelType, object userData = null)
         {
             ThrowIfNotInit();
@@ -187,5 +208,122 @@ namespace GameFramework.Runtime.UI
             ThrowIfNotInit();
             _panelScheduler.ReleasePanel<T>(userData);
         }
+
+        #endregion
+
+        #region Preload Panel
+
+        public void PreloadPanel(Type panelType, Action onComplete = null)
+        {
+            ThrowIfNotInit();
+            _panelScheduler.PreloadPanel(panelType, onComplete);
+        }
+
+        public void PreloadPanel<T>(Action onComplete = null) where T : UIPanelEntity
+        {
+            ThrowIfNotInit();
+            _panelScheduler.PreloadPanel<T>(onComplete);
+        }
+
+#if TASK_BASED_OPEN_PANEL
+        public async Task PreloadPanelAsync(Type panelType)
+        {
+            ThrowIfNotInit();
+            var task = new TaskCompletionSource<bool>();
+            _panelScheduler.PreloadPanel(panelType, () =>
+            {
+                task.SetResult(true);
+            });
+            await task.Task;
+        }
+
+        public async Task PreloadPanelAsync<T>() where T : UIPanelEntity
+        {
+            ThrowIfNotInit();
+            var task = new TaskCompletionSource<bool>();
+            _panelScheduler.PreloadPanel<T>(() =>
+            {
+                task.SetResult(true);
+            });
+            await task.Task;
+        }
+#endif
+
+#if DORIES_UNITASK_SUPPORT
+        public async UniTask PreloadPanelAsyncUniTask(Type panelType)
+        {
+            ThrowIfNotInit();
+            var task = new UniTaskCompletionSource();
+            _panelScheduler.PreloadPanel(panelType, () =>
+            {
+                task.TrySetResult();
+            });
+            await task.Task;
+        }
+
+        public async UniTask PreloadPanelAsyncUniTask<T>() where T : UIPanelEntity
+        {
+            ThrowIfNotInit();
+            var task = new UniTaskCompletionSource();
+            _panelScheduler.PreloadPanel<T>(() =>
+            {
+                task.TrySetResult();
+            });
+            await task.Task;
+        }
+#endif
+
+        #endregion
+
+        #region Popup Panel
+
+        /// <summary>
+        /// 开始弹窗
+        /// </summary>
+        public void StartPopupPanel()
+        {
+            ThrowIfNotInit();
+            _panelScheduler.StartPopupPanel();
+        }
+
+        public void AddPopUpPanel(Type panelType, Func<uint> getPopUpPriority, UIGroup group, bool isPreload = true, object userData = null, int layerPriority = 0)
+        {
+            ThrowIfNotInit();
+            _panelScheduler.AddPopUpPanel(panelType, getPopUpPriority, group, isPreload, userData, layerPriority);
+        }
+
+        public void AddPopUpPanel(Type panelType, uint popUpPriority, UIGroup group, bool isPreload = true, object userData = null, int layerPriority = 0)
+        {
+            ThrowIfNotInit();
+            _panelScheduler.AddPopUpPanel(panelType, popUpPriority, group, isPreload, userData, layerPriority);
+        }
+
+        public void AddPopUpPanel<T>(Func<uint> getPopUpPriority, UIGroup group, bool isPreload = true, object userData = null, int layerPriority = 0) where T : UIPanelEntity
+        {
+            ThrowIfNotInit();
+            _panelScheduler.AddPopUpPanel<T>(getPopUpPriority, group, isPreload, userData, layerPriority);
+        }
+
+        public void AddPopUpPanel<T>(uint popUpPriority, UIGroup group, bool isPreload = true, object userData = null, int layerPriority = 0) where T : UIPanelEntity
+        {
+            ThrowIfNotInit();
+            _panelScheduler.AddPopUpPanel<T>(popUpPriority, group, isPreload, userData, layerPriority);
+        }
+
+        public void RemovePopUpPanel(Type panelType)
+        {
+            ThrowIfNotInit();
+            _panelScheduler.RemovePopUpPanel(panelType);
+        }
+
+        public void RemovePopUpPanel<T>() where T : UIPanelEntity
+        {
+            ThrowIfNotInit();
+            _panelScheduler.RemovePopUpPanel<T>();
+        }
+
+        #endregion
+
+
     }
 }
