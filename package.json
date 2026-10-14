@@ -1,7 +1,7 @@
 {
     "name": "com.dories.gameframework",
     "displayName": "Dories GameFramework",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "unity": "2022.3",
     "description": "游戏入口、UI 面板调度与平台安全区适配。UI 异步依赖 UniTask，资源加载适配依赖 Dories YooAssetSystem。",
     "author": {
@@ -14,8 +14,8 @@
     ],
     "license": "MIT",
     "dependencies": {
-        "com.cysharp.unitask": "2.5.11",
-        "com.dories.yooassetsystem": "1.0.2",
+        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.5.11",
+        "com.dories.yooassetsystem": "https://github.com/13516093038/dories-yooassetsystem.git#split/yooassetsystem",
         "com.unity.ugui": "1.0.0"
     }
 }
