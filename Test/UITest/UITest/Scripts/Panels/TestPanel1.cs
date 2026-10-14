@@ -20,22 +20,22 @@ namespace GameFramework.Test.UITest.Scripts.Panels
             Debug.Log("TestPanel1 Start");
         }
 
-        protected internal override void OnCreate(object userData)
+        protected override void OnCreate(object userData)
         {
             Debug.Log("TestPanel1 OnCreate");
         }
 
-        protected internal override void OnOpen(object userData)
+        protected override void OnOpen(object userData)
         {
             Debug.Log("TestPanel1 OnOpen");
         }
 
-        protected internal override void OnClose(object userData)
+        protected override void OnClose(object userData)
         {
             Debug.Log("TestPanel1 OnClose");
         }
 
-        protected internal override void OnRelease(object userData)
+        protected override void OnRelease(object userData)
         {
             Debug.Log("TestPanel1 OnRelease");
         }

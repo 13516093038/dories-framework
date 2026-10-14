@@ -1,0 +1,29 @@
+{
+    "name": "GameFramework.Runtime",
+    "rootNamespace": "GameFramework.Runtime",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:34be2ba75b91747029ce41c2cfa0ecaf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.cysharp.unitask",
+            "expression": "",
+            "define": "DORIES_UNITASK_SUPPORT"
+        },
+        {
+            "name": "com.dories.yooassetsystem",
+            "expression": "",
+            "define": "DORIES_YOOASSET_SUPPORT"
+        }
+    ],
+    "noEngineReferences": false
+}
