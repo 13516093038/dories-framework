@@ -8,7 +8,7 @@ namespace GameFramework.Editor.Configs
     {
         private const string DefaultAssetPath = "Assets/AssemblyScanConfig.asset";
 
-        [SerializeField] private string[] _assemblyNames = { "Assembly-CSharp" };
+        [SerializeField] private string[] _assemblyNames = { "Assembly-CSharp", "GameFramework.Runtime" };
 
         public string[] AssemblyNames => _assemblyNames;
 
