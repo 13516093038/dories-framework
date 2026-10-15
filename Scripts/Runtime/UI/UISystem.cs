@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using GameFramework.Runtime.Utils;
 #if TASK_BASED_OPEN_PANEL
 using System.Threading.Tasks;
-using GameFramework.Runtime.Utils;
 #endif
 #if DORIES_UNITASK_SUPPORT
 using Cysharp.Threading.Tasks;
