@@ -13,5 +13,12 @@
         "safe-area"
     ],
     "license": "MIT",
+    "samples": [
+        {
+            "displayName": "UI Test",
+            "description": "UI 面板打开、关闭、预加载与弹窗示例场景、脚本和测试资源。",
+            "path": "Sample~"
+        }
+    ],
     "dependencies": {}
 }

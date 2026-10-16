@@ -23,6 +23,10 @@ https://github.com/13516093038/dories-framework.git
 
 `DORIES_UNITASK_SUPPORT` 与 `DORIES_YOOASSET_SUPPORT` 会在对应包存在时由程序集自动定义。抖音安全区代码包在 `UNITY_WEBGL && DOUYINMINIGAME` 内。
 
+## Sample
+
+Package Manager 中导入 **UI Test**。示例在 `Sample~`，未导入时不参与工程编译。
+
 ## 内容
 
 - **GameEntry**：启动时创建 `IGameProfileInfo`。
