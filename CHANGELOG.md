@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2] - 2026-10-27
+
+### Changed
+
+- 示例目录 `Sample` 改回 `Sample~`，与 package.json 的 samples 路径一致，未导入时不参与使用方工程的导入与编译
+- 包内不再带 `AssemblyScanConfig` 与 `BundleCollectorSetting` 资产，由使用方工程自己持有；避免与工程自有的 YooAsset 收集器配置冲突（YooAsset 要求全工程唯一）
+
 ## [1.0.1] - 2026-10-14
 
 ### Fixed

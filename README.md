@@ -25,9 +25,16 @@ https://github.com/13516093038/dories-framework.git
 
 `DORIES_UNITASK_SUPPORT` 与 `DORIES_YOOASSET_SUPPORT` 会在对应包存在时由程序集自动定义。抖音安全区代码包在 `UNITY_WEBGL && DOUYINMINIGAME` 内。
 
+## 工程配置
+
+包内不带任何配置资产，以下配置都放在使用方工程的 `Assets` 下：
+
+- **AssemblyScanConfig**：GameEntry Inspector 从这些程序集里查找流程类型。首次需要时自动创建 `Assets/AssemblyScanConfig.asset`（默认扫描 `Assembly-CSharp` 和 `GameFramework.Runtime`），把业务程序集加进去，否则 Inspector 会把业务流程当残留项清掉。
+- **YooAsset 收集器配置**（`BundleCollectorSetting`）：工程内只能有一份，由工程自己建。
+
 ## Sample
 
-Package Manager 中导入 **UI Test**。示例在 `Sample~`，未导入时不参与工程编译。
+Package Manager 中导入 **UI Test**。示例在 `Sample~`，未导入时不参与工程编译。示例用到的收集器配置在 `BundleCollectorConfig.xml`，导入后在 YooAsset 收集器窗口里导入该 xml。
 
 ## 内容
 

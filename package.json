@@ -1,7 +1,7 @@
 {
     "name": "com.dories.gameframework",
     "displayName": "Dories GameFramework",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "unity": "2022.3",
     "description": "游戏入口、UI 面板调度与平台安全区适配。UI 异步依赖 UniTask，资源加载适配依赖 Dories YooAssetSystem。",
     "author": {
