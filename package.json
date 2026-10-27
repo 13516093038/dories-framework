@@ -16,9 +16,12 @@
     "samples": [
         {
             "displayName": "UI Test",
-            "description": "UI 面板打开、关闭、预加载与弹窗示例场景、脚本和测试资源。",
+            "description": "UI 面板打开、关闭、预加载与弹窗示例，对象池（ObjectPoolTest）预热、借出、回收示例，音效（AudioTest）音乐切换、音效、音量示例，以及事件（EventTest）发布订阅、R3 操作符、订阅生命周期示例。",
             "path": "Sample~"
         }
     ],
-    "dependencies": {}
+    "dependencies": {
+        "com.dories.logging": "1.0.0",
+        "com.dories.fsm": "1.1.2"
+    }
 }

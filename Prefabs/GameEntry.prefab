@@ -33,6 +33,9 @@ Transform:
   - {fileID: 4880678878482360013}
   - {fileID: 6612461544915109242}
   - {fileID: 2753257437891644158}
+  - {fileID: 6816771300119757}
+  - {fileID: 6636683937965881687}
+  - {fileID: 1192164748040852813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4545379473109003904
@@ -50,6 +53,53 @@ MonoBehaviour:
   _targetFrameRate: 60
   _timeScale: 1
   _gameProfileInfo: GameFramework.Runtime.GameBase.GameProfile.DefaultGameProfile
+  _logSink: 
+  _procedures: []
+  _entranceProcedure: 
+--- !u!1 &1053098767763819721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1192164748040852813}
+  - component: {fileID: 4905302108008889992}
+  m_Layer: 0
+  m_Name: Event
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1192164748040852813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053098767763819721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1908493097843874862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4905302108008889992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053098767763819721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea5a4b295c474e75aa1062360e563d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1740017183805133550
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _autoInit: 1
+  _isAutoRelease: 1
   _autoReleaseTime: 60
   _resourceProviderName: GameFramework.Runtime.UI.External.DoriesYooAsset.DoriesResourceProvider
   _panelAddressResolverName: GameFramework.Runtime.UI.External.DoriesYooAsset.DoriesAddressablePathResolver
@@ -151,6 +202,126 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!1 &3803670690372669057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6636683937965881687}
+  - component: {fileID: 9122816191173281769}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6636683937965881687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803670690372669057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1908493097843874862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9122816191173281769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803670690372669057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d9d6f6f95794fd4991d205fab3147c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicVolume: 1
+  _soundVolume: 1
+  _musicMuted: 0
+  _soundMuted: 0
+  _musicMixerGroup: {fileID: 0}
+  _soundMixerGroup: {fileID: 0}
+  _maxSoundCount: 32
+  _clipIdleReleaseSeconds: 60
+  _releaseUnusedOnSceneUnloaded: 1
+  _clipProvider:
+    rid: 1777085185442447364
+  references:
+    version: 2
+    RefIds:
+    - rid: 1777085185442447364
+      type: {class: YooAssetAudioClipProvider, ns: Dories.Audio.Runtime, asm: Dories.Audio.Runtime}
+      data:
+        _loader: {fileID: 4667478322710861581}
+        _packageName: 
+--- !u!1 &7873838904673535774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816771300119757}
+  - component: {fileID: 8731985640103528928}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6816771300119757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873838904673535774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1908493097843874862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8731985640103528928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873838904673535774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff2d81fc2bc64ce788914357f51c149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSize: 64
+  _idleReleaseSeconds: 60
+  _releaseUnusedOnSceneUnloaded: 1
+  _prefabProvider:
+    rid: 1777085185442447360
+  references:
+    version: 2
+    RefIds:
+    - rid: 1777085185442447360
+      type: {class: YooAssetPrefabProvider, ns: Dories.ObjectPool.Runtime, asm: Dories.ObjectPool.Runtime}
+      data:
+        _loader: {fileID: 4667478322710861581}
+        _packageName: 
 --- !u!1001 &5071519217333747224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -224,6 +395,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2c70e646c6149cd816a76dbffffeb1, type: 3}
+--- !u!114 &4667478322710861581 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 479511407717181717, guid: bf2c70e646c6149cd816a76dbffffeb1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5071519217333747224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5ec48eff4674de3aaa492d9bdbebd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6612461544915109242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2136264669691001698, guid: bf2c70e646c6149cd816a76dbffffeb1,

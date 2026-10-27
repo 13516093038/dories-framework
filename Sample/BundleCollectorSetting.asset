@@ -30,8 +30,24 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/GameFramework/Test/UITest/UITest/Prefabs
+      - CollectPath: Assets/GameFramework/Sample/UITest/UITest/Prefabs
         CollectorGUID: c89ba28ce9ded42ab98a34e10d34a712
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameFramework/Sample/ObjectPoolTest/Prefabs
+        CollectorGUID: be467003693cb4b89a136895f3427859
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/GameFramework/Sample/AudioTest/Audio
+        CollectorGUID: 7a6e1cf4286a047adbfc215d437219a9
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

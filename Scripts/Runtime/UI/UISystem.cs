@@ -1,4 +1,5 @@
 using System;
+using Dories.Logging;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using GameFramework.Runtime.Utils;
@@ -118,7 +119,7 @@ namespace GameFramework.Runtime.UI
         {
             if (_isInit)
             {
-                Debug.LogWarning("UISystem already initialized");
+                Log.Warn("UISystem", "already initialized", this);
                 return;
             }
 

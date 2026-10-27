@@ -1,4 +1,5 @@
 using UnityEngine;
+using Dories.Logging;
 
 namespace GameFramework.UI.External.SafeArea
 {
@@ -42,8 +43,7 @@ namespace GameFramework.UI.External.SafeArea
             Panel.anchorMin = anchorMin;
             Panel.anchorMax = anchorMax;
 
-            Debug.LogFormat("New safe area applied to {0}: x={1}, y={2}, w={3}, h={4} on full extents w={5}, h={6}",
-                name, r.x, r.y, r.width, r.height, Screen.width, Screen.height);
+            Log.Debug("SafeArea", $"New safe area applied to {name}: x={r.x}, y={r.y}, w={r.width}, h={r.height} on full extents w={Screen.width}, h={Screen.height}", this);
         }
     }
 }

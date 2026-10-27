@@ -16,6 +16,8 @@ https://github.com/13516093038/dories-framework.git
 - YooAssetSystem：`https://github.com/13516093038/dories-yooassetsystem.git#split/yooassetsystem`
 - `com.unity.ugui` 1.0.0
 
+`Prefabs/GameEntry.prefab` 里的 `ObjectPool`、`Audio`、`Event` 节点分别需要 `com.dories.objectpool`、`com.dories.audio`、`com.dories.event`（后者还需 R3），不用可以删掉对应节点。
+
 ## 程序集
 
 - `GameFramework.Runtime`：`Scripts/Runtime`
@@ -29,6 +31,41 @@ Package Manager 中导入 **UI Test**。示例在 `Sample~`，未导入时不参
 
 ## 内容
 
-- **GameEntry**：启动时创建 `IGameProfileInfo`。
+- **GameEntry**：跨场景常驻（重复的会被销毁），应用帧率与时间缩放，创建 `IGameProfileInfo`，并静态暴露各系统：`GameEntry.UI / Asset / Patch / ObjectPool / Audio / Event / Procedure`（对应包存在时才有）。
+- **启动流程**：GameEntry Inspector 里只勾选要注册的流程、选入口流程；流程之间的跳转由各流程用 `ChangeState<T>(fsm)` 自己决定。
+- 补丁、登录等业务流程由项目自己写成 `ProcedureBase` 子类，框架不内置，可参考示例里的 `XxxPatchProcedure`：
+
+```csharp
+public class ProcedureLaunch : ProcedureBase
+{
+    protected override void OnEnter(FsmEntity<ProcedureSystem> fsm)
+    {
+        base.OnEnter(fsm);
+        GameEntry.Patch
+            .BuildNeedUpdateListener(downloader => downloader.StartDownload())
+            .BuildPatchCompleteListener(() =>
+            {
+                GameEntry.Asset.SetDefaultPackage("DefaultPackage");
+                ChangeState<ProcedureMenu>(fsm);
+            })
+            .StartPatch();
+    }
+}
+```
+
+```csharp
+public class ProcedureMenu : ProcedureBase
+{
+    protected override void OnEnter(FsmEntity<ProcedureSystem> fsm)
+    {
+        base.OnEnter(fsm);
+        GameEntry.Audio.PlayMusicAsync("MenuBgm").Forget();
+        GameEntry.UI.OpenPanelAsync<MenuPanel>(UIGroup.Main);
+    }
+}
+```
+- **ObjectPool**：`GameEntry` 预制体下的 `GameObjectPoolEntity`，自动用同场景的 `AssetLoaderEntity` 加载预制体，Inspector 在 Play Mode 显示各池状态。
+- **Audio**：`GameEntry` 预制体下的 `AudioEntity`，背景音乐淡入淡出、音效复用、分通道音量，AudioClip 经 `AssetLoaderEntity` 加载。
+- **Event**：`GameEntry` 预制体下的 `EventEntity`，基于 R3 的类型化事件总线，`Publish` / `Receive<T>()`。
 - **UISystem / PanelScheduler**：按层级打开、关闭、预加载和弹出面板。
 - **SafeArea**：按平台读取安全区。通用实现走 `Screen.safeArea`，抖音小游戏走 `TT.GetSystemInfo()`。

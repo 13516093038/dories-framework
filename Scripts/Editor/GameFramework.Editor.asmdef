@@ -2,7 +2,9 @@
     "name": "GameFramework.Editor",
     "rootNamespace": "GameFramework.Editor",
     "references": [
-        "GUID:ba2e3e3651d147bb97b6f7bceb3e73af"
+        "GUID:ba2e3e3651d147bb97b6f7bceb3e73af",
+        "Dories.Logging.Runtime",
+        "Dories.Fsm.Runtime"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,5 +1,6 @@
 #if UNITY_WEBGL && DOUYINMINIGAME
 using System;
+using Dories.Logging;
 using TTSDK;
 using TTSDK.UNBridgeLib.LitJson;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace GameFramework.UI.External.SafeArea
             }
             catch (Exception exception)
             {
-                Debug.LogWarning($"[DouyinSafeArea] 读取安全区失败，使用 Screen.safeArea。{exception.Message}");
+                Log.Warn("DouyinSafeArea", $"读取安全区失败，使用 Screen.safeArea。{exception.Message}");
                 return Screen.safeArea;
             }
         }
