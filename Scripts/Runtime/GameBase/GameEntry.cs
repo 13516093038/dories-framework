@@ -18,6 +18,9 @@ using Dories.Audio.Runtime;
 #if DORIES_EVENT_SUPPORT
 using Dories.Event.Runtime;
 #endif
+#if DORIES_STORAGE_SUPPORT
+using Dories.Storage.Runtime;
+#endif
 
 namespace GameFramework.Runtime.GameBase
 {
@@ -55,6 +58,9 @@ namespace GameFramework.Runtime.GameBase
 #if DORIES_EVENT_SUPPORT
         public static EventEntity Event { get; private set; }
 #endif
+#if DORIES_STORAGE_SUPPORT
+        public static StorageEntity Storage { get; private set; }
+#endif
 
         private void Awake()
         {
@@ -80,6 +86,9 @@ namespace GameFramework.Runtime.GameBase
 #endif
 #if DORIES_EVENT_SUPPORT
             Event = GetComponentInChildren<EventEntity>(true);
+#endif
+#if DORIES_STORAGE_SUPPORT
+            Storage = GetComponentInChildren<StorageEntity>(true);
 #endif
 
             Log.Info("GameEntry", $"GameProfileInfo: {GameProfileInfo.GameVersion}");
@@ -127,6 +136,9 @@ namespace GameFramework.Runtime.GameBase
 #endif
 #if DORIES_EVENT_SUPPORT
             Event = null;
+#endif
+#if DORIES_STORAGE_SUPPORT
+            Storage = null;
 #endif
         }
 

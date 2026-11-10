@@ -9,7 +9,8 @@
         "Dories.Fsm.Runtime",
         "Dories.ObjectPool.Runtime",
         "Dories.Audio.Runtime",
-        "Dories.Event.Runtime"
+        "Dories.Event.Runtime",
+        "Dories.Storage.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -25,7 +26,7 @@
             "define": "DORIES_UNITASK_SUPPORT"
         },
         {
-            "name": "com.dories.yooassetsystem",
+            "name": "com.tuyoogame.yooasset",
             "expression": "",
             "define": "DORIES_YOOASSET_SUPPORT"
         },
@@ -43,6 +44,11 @@
             "name": "com.dories.event",
             "expression": "",
             "define": "DORIES_EVENT_SUPPORT"
+        },
+        {
+            "name": "com.dories.storage",
+            "expression": "",
+            "define": "DORIES_STORAGE_SUPPORT"
         }
     ],
     "noEngineReferences": false
